@@ -14,9 +14,9 @@ void simulateCombat() {
 
         int monsterAttack = monster.attack();
         enemy.takeDamage(monsterAttack);
-        std::cout << monster.type << " attacks for " << monsterAttack
+        std::cout << monster.type << " (" << monster.health << ") attacks for " << monsterAttack
             << " damage! " << enemy.type << " health: "
-            << enemy.health << "\n";
+            << enemy.health+monsterAttack << " - " << monsterAttack << " = " << enemy.health << "\n";
 
         if (!enemy.isAlive()) {
             std::cout << enemy.type << " defeated!\n";
@@ -25,10 +25,10 @@ void simulateCombat() {
 
         int enemyAttack = enemy.attack();
         monster.takeDamage(enemyAttack);
-        std::cout << enemy.type << " (" << enemy.behavior
+        std::cout << enemy.type << " (" << enemy.health << ") (" << enemy.behavior
             << " behavior) attacks for " << enemyAttack
             << " damage! " << monster.type << " health: "
-            << monster.health << "\n";
+            << monster.health+enemyAttack << " - " << enemyAttack << " = " << monster.health << "\n";
 
         if (!monster.isAlive()) {
             std::cout << monster.type << " defeated!\n";
